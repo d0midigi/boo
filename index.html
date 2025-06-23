@@ -109,68 +109,55 @@
 
   <!-- Header ends here -->
   <div class="flex flex-col md:flex-row lg:flex-row">
-    <!-- Side menu starts here -->
-    <nav class="flex ml-10 mt-7 md:fixed lg:fixed" data-spy="affix" data-offset-top="300" data-offset-bottom="200"
-      role="navigation">
+    <!-- Side Menu -->
+    <nav class="flex ml-10 mt-7 md:fixed lg:fixed" role="navigation">
       <ul class="nav">
         <li class="font-medium"><a href="#link1">Welcome to hackherway!</a></li>
         <li class="font-medium">
-          <a href="javascript:void(0);" class="dropdown-toggle">Installation</a>
-      						<span class="dropdown-icon">+</span>
+          <button class="dropdown-toggle flex items-center">Installation <svg class="w-4 h-4 ml-2 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
           <ul class="nav dropdown-menu">
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link2_1">Windows</a>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link2_1">Windows</a></li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link2_2">Mac Os</a></li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link2_3">Linux</a></li>
+          </ul>
         </li>
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link2_2">Mac Os</a>
+        <li class="font-medium"><a href="#link3">Configuration</a></li>
+        <li class="font-medium">
+          <button class="dropdown-toggle flex items-center">Components <svg class="w-4 h-4 ml-2 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+          <ul class="nav dropdown-menu">
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link4_1">Font Family</a></li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link4_2">Buttons</a></li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link4_3">Tailwind Css</a></li>
+            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]"><a href="#link4_4">Cards</a></li>
+          </ul>
         </li>
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link2_3">Linux</a>
-        </li>
+        <li class="font-medium"><a href="#link5">Colors</a></li>
+        <li class="font-medium"><a href="#link6">Issues</a></li>
       </ul>
-    </li>
-    <li class="font-medium"><a href="#link3">Configuration</a></li>
-    <li class="font-medium">
-      <a href="javascript:void(0);" class="dropdown-toggle">Components</a>
-     						<span class="dropdown-icon">+</span>
-      <ul class="nav dropdown-menu">
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link4_1">Font Family</a>
-        </li>
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link4_2">Buttons</a>
-        </li>
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link4_3">Tailwind Css</a>
-        </li>
-        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-          <a href="#link4_4">Cards</a>
-        </li>
-      </ul>
-    </li>
-    <li class="font-medium"><a href="#link5">Colors</a></li>
-    <li class="font-medium"><a href="#link6">Issues</a></li>
-  </ul>
-</nav>
-    <!-- Side Menu ends here -->
-<section class="main">
-			<div class="page-header">
-				<h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
-				<h3>{{ page.title }}</h3>
-			</div>
-			<article class="content">
-				{{ content }}
-			</article>
-		</section>
+    </nav>
 
-    <!-- JavaScript to handle dropdown toggle -->
-<script>
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-      toggle.addEventListener('click', function () {
-        const menu = this.nextElementSibling;
-        const icon = this.querySelector('.dropdown-icon');
-        menu.classList.toggle('show');
-        icon.classList.toggle('rotate-180');
+    <!-- Main Content -->
+    <section class="main">
+      <div class="page-header">
+        <h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
+        <h3>{{ page.title }}</h3>
+      </div>
+      <article class="content">
+        {{ content }}
+      </article>
+    </section>
+  </div>
+
+  <!-- Dropdown Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function () {
+          const menu = this.nextElementSibling;
+          const icon = this.querySelector('.dropdown-icon');
+          menu.classList.toggle('show');
+          icon.classList.toggle('rotate-180');
+        });
       });
     });
   </script>
@@ -179,17 +166,22 @@
     .dropdown-menu {
       display: none;
     }
+
     .dropdown-menu.show {
       display: block;
     }
+
     .dropdown-icon {
       transition: transform 0.3s ease;
     }
+
     .dropdown-icon.rotate-180 {
       transform: rotate(180deg);
     }
   </style>
-</script>
+</body>
+
+</html>
 
 <!-- CSS to hide dropdown menus by default and toggle visibility -->
 		<style>
