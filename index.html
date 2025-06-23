@@ -115,42 +115,67 @@
       <ul class="nav">
         <li class="font-medium"><a href="#link1">Welcome to hackherway!</a></li>
         <li class="font-medium">
-          <a href="#link2">Installation</a>
-          <ul class="nav">
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link2_1">Windows</a>
-            </li>
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link2_2">Mac Os</a>
-            </li>
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link2_3">Linux</a>
-            </li>
-          </ul>
+          <a href="javascript:void(0);" class="dropdown-toggle">Installation</a>
+      <ul class="nav dropdown-menu">
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link2_1">Windows</a>
         </li>
-        <li class="font-medium"><a href="#link3">Configuration</a></li>
-        <li class="font-medium">
-          <a href="#link4">Components</a>
-          <ul class="nav">
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link4_1">Font Family</a>
-            </li>
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link4_2">Buttons</a>
-            </li>
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link4_3">Tailwind Css</a>
-            </li>
-            <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
-              <a href="#link4_4">Cards</a>
-            </li>
-          </ul>
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link2_2">Mac Os</a>
         </li>
-        <li class="font-medium"><a href="#link5">Colors</a></li>
-        <li class="font-medium"><a href="#link6">Issues</a></li>
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link2_3">Linux</a>
+        </li>
       </ul>
-    </nav>
+    </li>
+    <li class="font-medium"><a href="#link3">Configuration</a></li>
+    <li class="font-medium">
+      <a href="javascript:void(0);" class="dropdown-toggle">Components</a>
+      <ul class="nav dropdown-menu">
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link4_1">Font Family</a>
+        </li>
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link4_2">Buttons</a>
+        </li>
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link4_3">Tailwind Css</a>
+        </li>
+        <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
+          <a href="#link4_4">Cards</a>
+        </li>
+      </ul>
+    </li>
+    <li class="font-medium"><a href="#link5">Colors</a></li>
+    <li class="font-medium"><a href="#link6">Issues</a></li>
+  </ul>
+</nav>
     <!-- Side Menu ends here -->
+
+    <!-- JavaScript to handle dropdown toggle -->
+<script>
+  // Select all dropdown-toggle elements
+  const dropdowns = document.querySelectorAll('.dropdown-toggle');
+  
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', function() {
+      // Toggle the visibility of the dropdown menu
+      const menu = this.nextElementSibling; // The corresponding <ul>
+      menu.classList.toggle('show');
+    });
+  });
+</script>
+
+<!-- CSS to hide dropdown menus by default -->
+<style>
+  .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+</style>
 
     <div class="pl-5 md:pl-[250px] lg:pl-[250px]">
       <!-- Link1 start -->
