@@ -165,20 +165,30 @@
 
     <!-- JavaScript to handle dropdown toggle -->
 <script>
-  // Select all dropdown-toggle elements
-  const dropdowns = document.querySelectorAll('.dropdown-toggle');
-  
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', function() {
-      // Toggle the visibility of the dropdown menu
-      const menu = this.nextElementSibling; // The corresponding <ul>
-const icon = this.nextElementSibling.nextElementSibling; // The corresponding <span> (icon)
-					
-					// Toggle visibility and icon change
-					menu.classList.toggle('show');
-					icon.textContent = menu.classList.contains('show') ? '−' : '+';
-				});    });
-  });
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function () {
+        const menu = this.nextElementSibling;
+        const icon = this.querySelector('.dropdown-icon');
+        menu.classList.toggle('show');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+  </script>
+
+  <style>
+    .dropdown-menu {
+      display: none;
+    }
+    .dropdown-menu.show {
+      display: block;
+    }
+    .dropdown-icon {
+      transition: transform 0.3s ease;
+    }
+    .dropdown-icon.rotate-180 {
+      transform: rotate(180deg);
+    }
+  </style>
 </script>
 
 <!-- CSS to hide dropdown menus by default and toggle visibility -->
