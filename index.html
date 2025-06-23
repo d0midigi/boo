@@ -116,7 +116,8 @@
         <li class="font-medium"><a href="#link1">Welcome to hackherway!</a></li>
         <li class="font-medium">
           <a href="javascript:void(0);" class="dropdown-toggle">Installation</a>
-      <ul class="nav dropdown-menu">
+      						<span class="dropdown-icon">+</span>
+          <ul class="nav dropdown-menu">
         <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
           <a href="#link2_1">Windows</a>
         </li>
@@ -131,6 +132,7 @@
     <li class="font-medium"><a href="#link3">Configuration</a></li>
     <li class="font-medium">
       <a href="javascript:void(0);" class="dropdown-toggle">Components</a>
+     						<span class="dropdown-icon">+</span>
       <ul class="nav dropdown-menu">
         <li class="text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]">
           <a href="#link4_1">Font Family</a>
@@ -151,6 +153,15 @@
   </ul>
 </nav>
     <!-- Side Menu ends here -->
+<section class="main">
+			<div class="page-header">
+				<h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
+				<h3>{{ page.title }}</h3>
+			</div>
+			<article class="content">
+				{{ content }}
+			</article>
+		</section>
 
     <!-- JavaScript to handle dropdown toggle -->
 <script>
@@ -161,21 +172,29 @@
     dropdown.addEventListener('click', function() {
       // Toggle the visibility of the dropdown menu
       const menu = this.nextElementSibling; // The corresponding <ul>
-      menu.classList.toggle('show');
-    });
+const icon = this.nextElementSibling.nextElementSibling; // The corresponding <span> (icon)
+					
+					// Toggle visibility and icon change
+					menu.classList.toggle('show');
+					icon.textContent = menu.classList.contains('show') ? '−' : '+';
+				});    });
   });
 </script>
 
-<!-- CSS to hide dropdown menus by default -->
-<style>
-  .dropdown-menu {
-    display: none;
-  }
+<!-- CSS to hide dropdown menus by default and toggle visibility -->
+		<style>
+			.dropdown-menu {
+				display: none;
+			}
 
-  .dropdown-menu.show {
-    display: block;
-  }
-</style>
+			.dropdown-menu.show {
+				display: block;
+			}
+
+			/* Style for dropdown icon */
+			.dropdown-icon {
+				margin-left: 10px;
+			}</style>
 
     <div class="pl-5 md:pl-[250px] lg:pl-[250px]">
       <!-- Link1 start -->
